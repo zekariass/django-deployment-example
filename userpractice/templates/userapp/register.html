@@ -1,0 +1,19 @@
+{% extends 'userapp/base.html' %}
+ {% block body_block %}
+    <div class="jumbotron">
+
+      {% if registered %}
+      <h1>THANK YOU FOR REGISTERIN!</h1>
+      <br>
+      <a href="{% url 'login' %}">Please login!</a>
+      {% else %}
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{user_form.as_p}}
+        {{user_profile_data_form.as_p}}
+        <input type="submit" name="" value="Register">
+      </form>
+      {% endif %}
+    </div>
+
+  {% endblock %}
